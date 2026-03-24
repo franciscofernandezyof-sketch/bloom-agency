@@ -1,33 +1,8 @@
 {
-  "lockfileVersion": 1,
-  "configVersion": 0,
-  "workspaces": {
-    "": {
-      "name": "app",
-      "dependencies": {
-        "lucide-react": "^0.577.0",
-        "react": "^19.2.4",
-        "react-dom": "^19.2.4",
-      },
-      "devDependencies": {
-        "@eslint/js": "^9.39.4",
-        "@types/react": "^19.2.14",
-        "@types/react-dom": "^19.2.3",
-        "@vitejs/plugin-react": "^6.0.1",
-        "autoprefixer": "^10.4.27",
-        "eslint": "^9.39.4",
-        "eslint-plugin-react-hooks": "^7.0.1",
-        "eslint-plugin-react-refresh": "^0.5.2",
-        "globals": "^17.4.0",
-        "postcss": "^8.5.8",
-        "tailwindcss": "^3.4.19",
-        "vite": "^8.0.1",
-      },
-    },
-  },
-  "packages": {
-    "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
-
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
     "@babel/code-frame": ["@babel/code-frame@7.29.0", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.28.5", "js-tokens": "^4.0.0", "picocolors": "^1.1.1" } }, "sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw=="],
 
     "@babel/compat-data": ["@babel/compat-data@7.29.0", "", {}, "sha512-T1NCJqT/j9+cn8fvkt7jtwbLBfLC/1y1c7NtCeXFRgzGTsafi68MRv8yzkYSapBnFA6L3U2VSc02ciDzoAJhJg=="],
