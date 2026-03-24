@@ -1,0 +1,138 @@
+import { useEffect, useRef } from 'react';
+import { TrendingUp, MessageCircle, Megaphone, Heart, Shield, BarChart3 } from 'lucide-react';
+
+// All gradients use pastel rose (#F2A7C3) → pastel violet (#C3A7E8) variants
+const services = [
+  {
+    icon: <TrendingUp size={24} />,
+    title: 'Marketing & Crecimiento',
+    desc: 'Estrategias personalizadas de crecimiento en Fanfix y redes sociales. Optimizamos tu perfil, hashtags y calendario de contenido para maximizar visibilidad.',
+    tags: ['Estrategia de contenido', 'SEO social', 'Calendario editorial'],
+    gradient: 'linear-gradient(135deg, #F2A7C3, #D9A0DA)',
+    bg: 'rgba(242,167,195,0.06)',
+    border: 'rgba(242,167,195,0.15)',
+    glow: 'rgba(242,167,195,0.35)',
+  },
+  {
+    icon: <MessageCircle size={24} />,
+    title: 'Gestión & Chatting',
+    desc: 'Nuestro equipo gestiona la interacción con tu audiencia de forma profesional, aumentando la retención y fidelidad de tus suscriptores.',
+    tags: ['Atención al fan', 'Upselling ético', 'Respuestas 24h'],
+    gradient: 'linear-gradient(135deg, #D9A0DA, #C3A7E8)',
+    bg: 'rgba(217,160,218,0.06)',
+    border: 'rgba(217,160,218,0.15)',
+    glow: 'rgba(217,160,218,0.35)',
+  },
+  {
+    icon: <Megaphone size={24} />,
+    title: 'Publicidad & Partnerships',
+    desc: 'Te conectamos con creadoras afines para cross-promotions y gestionamos campañas pagadas que aumentan tus suscriptores de forma sostenible.',
+    tags: ['Shoutouts', 'Collabs', 'Paid Ads'],
+    gradient: 'linear-gradient(135deg, #C3A7E8, #b8a0f0)',
+    bg: 'rgba(195,167,232,0.06)',
+    border: 'rgba(195,167,232,0.15)',
+    glow: 'rgba(195,167,232,0.35)',
+  },
+  {
+    icon: <BarChart3 size={24} />,
+    title: 'Análisis & Reportes',
+    desc: 'Dashboard con métricas en tiempo real: ingresos, engagement, crecimiento de suscriptores y proyecciones para tomar mejores decisiones.',
+    tags: ['Métricas en tiempo real', 'Informes semanales', 'KPIs claros'],
+    gradient: 'linear-gradient(135deg, #F2A7C3, #C3A7E8)',
+    bg: 'rgba(242,167,195,0.05)',
+    border: 'rgba(242,167,195,0.13)',
+    glow: 'rgba(242,167,195,0.3)',
+  },
+  {
+    icon: <Heart size={24} />,
+    title: 'Soporte a Creadoras',
+    desc: 'Acompañamiento continuo con tu manager personal dedicado. Desde la estrategia hasta los imprevistos del día a día, siempre tendrás apoyo.',
+    tags: ['Manager dedicado', 'Disponible 7/7', 'Mentoría incluida'],
+    gradient: 'linear-gradient(135deg, #D9A0DA, #F2A7C3)',
+    bg: 'rgba(217,160,218,0.06)',
+    border: 'rgba(217,160,218,0.15)',
+    glow: 'rgba(217,160,218,0.35)',
+  },
+  {
+    icon: <Shield size={24} />,
+    title: 'Privacidad & Seguridad',
+    desc: 'Protegemos tu identidad y contenido con protocolos estrictos de privacidad. Tú decides qué se muestra y qué no — siempre en control total.',
+    tags: ['100% confidencial', 'Contenido soft', 'Protección de datos'],
+    gradient: 'linear-gradient(135deg, #a0e8d4, #C3A7E8)',
+    bg: 'rgba(160,232,212,0.05)',
+    border: 'rgba(160,232,212,0.13)',
+    glow: 'rgba(160,232,212,0.3)',
+  },
+];
+
+const Services = () => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => { entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }); },
+      { threshold: 0.1 }
+    );
+    ref.current?.querySelectorAll('.animate-on-scroll')?.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section id="services" className="section-padding" ref={ref}>
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16 animate-on-scroll">
+          <div className="inline-flex items-center gap-2 bg-glass-pink rounded-full px-4 py-2 mb-5">
+            <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#F2A7C3' }}>
+              Nuestros servicios
+            </span>
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
+            Todo lo que necesitas para{' '}
+            <span className="text-gradient italic">crecer</span>
+          </h2>
+          <p className="text-white/50 text-lg max-w-xl mx-auto">
+            Todo lo que necesitas para convertir tu comunidad en ingresos reales. Tú
+            enfocada en crear — nosotros nos encargamos del resto.
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((s, i) => (
+            <div
+              key={s.title}
+              className="animate-on-scroll card-hover rounded-3xl p-7 cursor-default"
+              style={{ background: s.bg, border: `1px solid ${s.border}`, transitionDelay: `${i * 80}ms` }}
+            >
+              {/* Icon */}
+              <div
+                className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 shadow-lg"
+                style={{ background: s.gradient, boxShadow: `0 8px 24px ${s.glow}`, color: '#1a0d22' }}
+              >
+                {s.icon}
+              </div>
+
+              <h3 className="text-white font-semibold text-lg mb-2">{s.title}</h3>
+              <p className="text-white/50 text-sm leading-relaxed mb-5">{s.desc}</p>
+
+              <div className="flex flex-wrap gap-2">
+                {s.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs px-3 py-1 rounded-full font-medium text-white/55"
+                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;
